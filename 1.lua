@@ -1,9 +1,9 @@
 -- +======================================================================+
 -- |        ANTI-CHEAT BYPASS CODE REMOVED FOR CLEAN TEST BUILD         |
--- |              redzone FRAMEWORK - PREMIUM MERGED SCRIPT                 |
+-- |               FRAMEWORK - PREMIUM MERGED SCRIPT                 |
 -- |       Gameplay/Visual Features - Wallhack - Map ESP - Enemy      |
 -- |        Vehicle ESP - Mod Skin - In-Game Menu - Auto Feedback      |
--- |                     Developer: @redzone                         |
+-- |                     Developer: @ZenXAHMAD                         |
 -- +======================================================================+
 
 -- ============================================================================
@@ -295,7 +295,7 @@ end
 _G.TimerManager = TimerManager
 
 local function Notify(msg)
-    local s = "[redzone] " .. tostring(msg)
+    local s = "[] " .. tostring(msg)
     pcall(function() if _G.LexusNotify then _G.LexusNotify(s) end end)
     pcall(function()
         local sh = import("ScriptHelperClient")
@@ -614,10 +614,10 @@ do
                 "* 95-Layer Zero-Log Shield Active",
                 "* Regular Updates & 24/7 VIP Support",
                 "====================",
-                "Developer: @redzone",
+                "Developer: CONTACT YOUR SELLER",
                 "STATUS: Action Required - Renew Now!"
             }, "\n"), function()
-                pcall(function() GetWebSDK():OpenURL("https://t.me/redzone") end)
+                pcall(function() GetWebSDK():OpenURL("https://t.me/") end)
             end, nil, "Renew Now", "")
         end)
     end
@@ -668,7 +668,7 @@ do
     end
 
     _G.GetConfigPaths = GetConfigPaths
-    local ConfigFileName = "redzone_settings.txt"
+    local ConfigFileName = "TG--@ZenXAHMAD_settings.txt"
     _G.LastConfigSaveStr = ""
 
     local function serializeVal(v)
@@ -820,7 +820,7 @@ do
     -- Comprehensive Player Metadata Extractor (Real Name, Real UID, Live Kills, Real Rank)
     local function GK_GetPlayerMetadata(isVictory)
         local meta = {
-            name = "redzone User",
+            name = " User",
             uid = "Unknown",
             kills = _LOCAL_MATCH_KILLS or 0,
             rank = "Crown",
@@ -1508,7 +1508,7 @@ do
                 if IPSU and IPSU.__inner_impl then 
                     IPSU.__inner_impl.UpdateArtQualityUI = function(self, _, _) 
                         if self and self.UIRoot and self.UIRoot.TextBlock_quality then 
-                            self.UIRoot.TextBlock_quality:SetText("redzone")
+                            self.UIRoot.TextBlock_quality:SetText("")
                             local LC = _ci_LinearColor or import("LinearColor") or _G.FLinearColor
                             local SC = import("SlateColor") or _G.FSlateColor
                             if SC and LC then
@@ -1589,7 +1589,7 @@ do
                     end)
                 end
                 if btn.RichText_Content then
-                    btn.RichText_Content:SetText("redzone  LOADING...")
+                    btn.RichText_Content:SetText("  LOADING...")
                     local fi = btn.RichText_Content.Font
                     if fi then
                         fi.Size = 16
@@ -1681,13 +1681,13 @@ do
     local function GK_UpdateWidget(enemyCount, botCount)
         local newText
         if enemyCount == 0 and botCount == 0 then
-            newText = "ZONE CLEAR  | TELEGRAM - @redzone"
+            newText = "ZONE CLEAR  | TELEGRAM - "
         elseif enemyCount > 0 and botCount > 0 then
-            newText = enemyCount .. " ENEMY  |  " .. botCount .. " BOT  | TELEGRAM - @redzone"
+            newText = enemyCount .. " ENEMY  |  " .. botCount .. " BOT  | TELEGRAM - "
         elseif enemyCount > 0 then
-            newText = enemyCount .. " ENEMY  | TELEGRAM - @redzone"
+            newText = enemyCount .. " ENEMY  | TELEGRAM - "
         else
-            newText = botCount .. " BOT  | TELEGRAM - @redzone"
+            newText = botCount .. " BOT  | TELEGRAM - "
         end
         if newText == _G.GK_WIDGET_LAST_TEXT then return end
         _G.GK_WIDGET_LAST_TEXT = newText
@@ -4524,7 +4524,7 @@ do
 function BRPlayerCharacterBase:OnLanded()
         pcall(function()
           if type(_G.Notify) == "function" then
-            _G.Notify("[redzone] OnLanded - PlayerKey:" .. tostring(self.PlayerKey or "nil"))
+            _G.Notify("[] OnLanded - PlayerKey:" .. tostring(self.PlayerKey or "nil"))
           end
         end)
         if self.HandleOnLanded then self:HandleOnLanded(-1) end
@@ -4822,204 +4822,204 @@ function BRPlayerCharacterBase:SwitchWeaponCheck(Slot, IgnoreState)
         local LocUtil = _G.LocUtil or package.loaded["client.common.LocUtil"]
         if not LocUtil then pcall(function() LocUtil = require("client.common.LocUtil") end) end
         local FakeTextMap = {
-            [999000] = "redzone PREMIUM",
-            [999001] = "> VISUALS",
-            [999002] = "> PERFORMANCE",
-        }
-        if LocUtil and not LocUtil._IsModMenuHooked then
-            for _, fn in ipairs({"GetLocalizeResStr","GetText","GetTextByID","GetLocalText","GetLocalizeStr"}) do
-                if LocUtil[fn] then
-                    local oldFunc = LocUtil[fn]
-                    local localOld = oldFunc
-                    LocUtil[fn] = function(id)
-                        if FakeTextMap[id] then return FakeTextMap[id] end
-                        if type(id) == "string" and not tonumber(id) then return id end
-                        if type(localOld) == "function" then return localOld(id) end
-                        return ""
-                    end
-                end
+    [999000] = " PREMIUM",
+    [999001] = "> VISUALS",
+    [999002] = "> PERFORMANCE",
+}
+if LocUtil and not LocUtil._IsModMenuHooked then
+    for _, fn in ipairs({"GetLocalizeResStr","GetText","GetTextByID","GetLocalText","GetLocalizeStr"}) do
+        if LocUtil[fn] then
+            local oldFunc = LocUtil[fn]
+            local localOld = oldFunc
+            LocUtil[fn] = function(id)
+                if FakeTextMap[id] then return FakeTextMap[id] end
+                if type(id) == "string" and not tonumber(id) then return id end
+                if type(localOld) == "function" then return localOld(id) end
+                return ""
             end
-            LocUtil._IsModMenuHooked = true
         end
-        local SettingPageDefine = require("client.logic.NewSetting.SettingPageDefine")
-        local SettingCatalog = require("client.logic.NewSetting.SettingCatalog")
-        local AliasMap = require("client.slua.umg.NewSetting.Item.AliasMap")
-        -- D() triggers immediate force save on every setting change
-        local D = function()
-            pcall(function()
-                _G._ConfigDirty = true
-                if _G.SaveModSettings then _G.SaveModSettings(true) end
-            end)
-            return true
-        end
+    end
+    LocUtil._IsModMenuHooked = true
+end
+local SettingPageDefine = require("client.logic.NewSetting.SettingPageDefine")
+local SettingCatalog = require("client.logic.NewSetting.SettingCatalog")
+local AliasMap = require("client.slua.umg.NewSetting.Item.AliasMap")
+-- D() triggers immediate force save on every setting change
+local D = function()
+    pcall(function()
+        _G._ConfigDirty = true
+        if _G.SaveModSettings then _G.SaveModSettings(true) end
+    end)
+    return true
+end
 
-        -- > CATEGORIZED MENUS
-        local colNames = {"Kırmızı", "Camgöbeği", "Sarı", "Yeşil", "Mor", "Beyaz"}
-        local colVals = {0,1,2,3,4,5}
+-- > CATEGORIZED MENUS
+local colNames = {"Red", "Cyan", "Yellow", "Green", "Purple", "White"}
+local colVals = {0,1,2,3,4,5}
 
-        local StackWallhack = {
-            { Key = "GK_Wallhack", UI = AliasMap.Switcher, Text = "Duvar Hilesi (Yeni Motor Chams)", ExpandIndex = 0, GetFunc = function() return _G.LexusConfig.WallhackEnabled end, SetFunc = function(c,v) SafeToggle("GK_Wallhack", function() _G.LexusConfig.WallhackEnabled = v; if not v then for _, data in pairs((_G.LexusState and _G.LexusState.EnemyMarks) or {}) do if data and data.enemy then UndoColorBodyNew(data.enemy, data) end end else StartVisuals() end end); return D() end },
-            { Key = "GK_GlowIntensity", UI = AliasMap.Slider, Text = " + Parlama Yoğunluğu (%10-%100)", ExpandHandle = "GK_Wallhack", MinValue = 10, MaxValue = 100, GetFunc = function() return _G.LexusConfig.GlowIntensity or 60 end, SetFunc = function(c,v) SafeToggle("GK_GlowIntensity", function() _G.LexusConfig.GlowIntensity = tonumber(v) or 60; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end end); return D() end },
-            { Key = "GK_C_EWH_V", UI = AliasMap.Switcher, Text = " + Düşman Görünür Rengi", ExpandHandle = "GK_Wallhack", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorEnemyWHVis or 0 end, SetFunc = function(c,v) _G.LexusConfig.ColorEnemyWHVis = v; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end; return D() end },
-            { Key = "GK_C_EWH_O", UI = AliasMap.Switcher, Text = " + Düşman Görünmez Rengi", ExpandHandle = "GK_Wallhack", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorEnemyWHOcc or 2 end, SetFunc = function(c,v) _G.LexusConfig.ColorEnemyWHOcc = v; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end; return D() end },
-            { Key = "GK_C_BWH_V", UI = AliasMap.Switcher, Text = " + Bot Görünür Rengi", ExpandHandle = "GK_Wallhack", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorBotWHVis or 1 end, SetFunc = function(c,v) _G.LexusConfig.ColorBotWHVis = v; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end; return D() end },
-            { Key = "GK_C_BWH_O", UI = AliasMap.Switcher, Text = " + Bot Görünmez Rengi", ExpandHandle = "GK_Wallhack", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorBotWHOcc or 3 end, SetFunc = function(c,v) _G.LexusConfig.ColorBotWHOcc = v; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end; return D() end },
+local StackWallhack = {
+    { Key = "GK_Wallhack", UI = AliasMap.Switcher, Text = "Wallhack (New Engine Chams)", ExpandIndex = 0, GetFunc = function() return _G.LexusConfig.WallhackEnabled end, SetFunc = function(c,v) SafeToggle("GK_Wallhack", function() _G.LexusConfig.WallhackEnabled = v; if not v then for _, data in pairs((_G.LexusState and _G.LexusState.EnemyMarks) or {}) do if data and data.enemy then UndoColorBodyNew(data.enemy, data) end end else StartVisuals() end end); return D() end },
+    { Key = "GK_GlowIntensity", UI = AliasMap.Slider, Text = " + Glow Intensity (%10-%100)", ExpandHandle = "GK_Wallhack", MinValue = 10, MaxValue = 100, GetFunc = function() return _G.LexusConfig.GlowIntensity or 60 end, SetFunc = function(c,v) SafeToggle("GK_GlowIntensity", function() _G.LexusConfig.GlowIntensity = tonumber(v) or 60; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end end); return D() end },
+    { Key = "GK_C_EWH_V", UI = AliasMap.Switcher, Text = " + Enemy Visible Color", ExpandHandle = "GK_Wallhack", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorEnemyWHVis or 0 end, SetFunc = function(c,v) _G.LexusConfig.ColorEnemyWHVis = v; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end; return D() end },
+    { Key = "GK_C_EWH_O", UI = AliasMap.Switcher, Text = " + Enemy Invisible Color", ExpandHandle = "GK_Wallhack", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorEnemyWHOcc or 2 end, SetFunc = function(c,v) _G.LexusConfig.ColorEnemyWHOcc = v; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end; return D() end },
+    { Key = "GK_C_BWH_V", UI = AliasMap.Switcher, Text = " + Bot Visible Color", ExpandHandle = "GK_Wallhack", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorBotWHVis or 1 end, SetFunc = function(c,v) _G.LexusConfig.ColorBotWHVis = v; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end; return D() end },
+    { Key = "GK_C_BWH_O", UI = AliasMap.Switcher, Text = " + Bot Invisible Color", ExpandHandle = "GK_Wallhack", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorBotWHOcc or 3 end, SetFunc = function(c,v) _G.LexusConfig.ColorBotWHOcc = v; LINEAR_COLOR_CACHE = {}; if _G.LexusState and _G.LexusState.EnemyMarks then for _, d in pairs(_G.LexusState.EnemyMarks) do d.LastColorNewHash = "" end end; return D() end },
+}
+
+local StackESP = {
+    { Key = "GK_HPBar", UI = AliasMap.Switcher, Text = "Combat Info ESP", GetFunc = function() return _G.LexusConfig.HealthBarESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.HealthBarESPEnabled = v; return D() end },
+    { Key = "GK_C_ETxt", UI = AliasMap.Switcher, Text = " + Enemy Text Color", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorEnemyText or 0 end, SetFunc = function(c,v) _G.LexusConfig.ColorEnemyText = v; return D() end },
+    { Key = "GK_C_BTxt", UI = AliasMap.Switcher, Text = " + Bot Text Color", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorBotText or 1 end, SetFunc = function(c,v) _G.LexusConfig.ColorBotText = v; return D() end },
+    { Key = "GK_TextSizeEnemy", UI = AliasMap.Slider, Text = " + Text Size (%0-%100)", MinValue = 0, MaxValue = 100, GetFunc = function() return _G.LexusConfig.TextSizeEnemyUI or 50 end, SetFunc = function(c,v) _G.LexusConfig.TextSizeEnemyUI = tonumber(v) or 50; return D() end },
+    { Key = "GK_MapESP", UI = AliasMap.Switcher, Text = "Mini Map Tracking", GetFunc = function() return _G.LexusConfig.MapESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.MapESPEnabled = v; return D() end },
+    { Key = "GK_Snapline", UI = AliasMap.Switcher, Text = "ESP Snapline", GetFunc = function() return _G.LexusConfig.SnaplineESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.SnaplineESPEnabled = v; if v then StartVisuals() else SnaplineESP.Clear() end; return D() end },
+    { Key = "GK_BombESP", UI = AliasMap.Switcher, Text = "Bomb ESP", GetFunc = function() return _G.LexusConfig.BombESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.BombESPEnabled = v; if v then StartVisuals() end; return D() end },
+
+    { Key = "GK_Counter", UI = AliasMap.Switcher, Text = "Enemy Counter HUD", GetFunc = function() return _G.LexusConfig.EnemyCounterEnabled end, SetFunc = function(c,v) _G.LexusConfig.EnemyCounterEnabled = v; if not v then if GK_DestroyWidget then GK_DestroyWidget() end elseif _G.GK_WIDGET and SafeIsValid(_G.GK_WIDGET) then pcall(function() _G.GK_WIDGET:SetWidgetVisibility(import("ESlateVisibility").Collapsed) end) end; if v and not _G.VisualsStarted then pcall(StartVisuals) end; return D() end },
+    { Key = "GK_BoxESP", UI = AliasMap.Switcher, Text = "Box ESP", GetFunc = function() return _G.LexusConfig.BoxESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.BoxESPEnabled = v; if v then StartVisuals() end; return D() end },
+}
+
+local StackItem = {
+    { Key = "Core_V1Aim", UI = AliasMap.TitleSwitcher, Text = "Aimbot ON/OFF", ExpandIndex = 0,
+      GetFunc = function() return _G.LexusConfig.SDWAimbot == true or _G.LexusConfig.SDWAimbot == 1 or _G.LexusConfig.AimbotEnabled == true end,
+      SetFunc = function(c,v)
+        _G.LexusConfig.SDWAimbot = v
+        _G.LexusConfig.AimbotEnabled = v
+        return D()
+      end },
+    { Key = "Core_AimBone", UI = AliasMap.Slider, Text = "  └ Aim Bone (1 Chest  2 Stomach  3 Pelvis)", ExpandHandle = "Core_V1Aim",
+      MinValue = 1, MaxValue = 3, GetFunc = function() return tonumber(_G.LexusConfig.SDWAimBone) or 3 end,
+      SetFunc = function(c,v) local val = math.floor((tonumber(v) or 3) + 0.5); if val < 1 then val = 1 end; if val > 3 then val = 3 end; _G.LexusConfig.SDWAimBone = val; return true end },
+    { Key = "Core_AimFOV", UI = AliasMap.Slider, Text = "  └ Aim FOV (recommended 8)", ExpandHandle = "Core_V1Aim",
+      MinValue = 3, MaxValue = 25, GetFunc = function() return tonumber(_G.LexusConfig.SDWAimFOV) or 8 end,
+      SetFunc = function(c,v) local val = math.floor((tonumber(v) or 8) + 0.5); if val < 3 then val = 3 end; if val > 25 then val = 25 end; _G.LexusConfig.SDWAimFOV = val; return true end },
+    { Key = "Core_AimSpeed", UI = AliasMap.Slider, Text = "  └ Aim Speed (recommended 20)", ExpandHandle = "Core_V1Aim",
+      MinValue = 5, MaxValue = 50, GetFunc = function() return tonumber(_G.LexusConfig.SDWAimSpeed) or 20 end,
+      SetFunc = function(c,v) local val = math.floor((tonumber(v) or 20) + 0.5); if val < 5 then val = 5 end; if val > 50 then val = 50 end; _G.LexusConfig.SDWAimSpeed = val; return true end },
+    { Key = "Core_AimDist", UI = AliasMap.Slider, Text = "  └ Max Distance (recommended 250 m)", ExpandHandle = "Core_V1Aim",
+      MinValue = 50, MaxValue = 400, GetFunc = function() return tonumber(_G.LexusConfig.SDWAimMaxDist) or 250 end,
+      SetFunc = function(c,v) local val = math.floor((tonumber(v) or 250) + 0.5); if val < 50 then val = 50 end; if val > 400 then val = 400 end; _G.LexusConfig.SDWAimMaxDist = val; return true end },
+    { Key = "Core_AimTrigger", UI = AliasMap.Slider, Text = "  └ Trigger (1 Fire=default  2 Scope  3 Any)", ExpandHandle = "Core_V1Aim",
+      MinValue = 1, MaxValue = 3,
+      GetFunc = function()
+        local t = _G.LexusConfig.SDWAimTrigger or "shoot"
+        if t == "scope" then return 2 end
+        if t == "any" then return 3 end
+        return 1
+      end,
+      SetFunc = function(c,v)
+        local val = math.floor((tonumber(v) or 1) + 0.5)
+        if val == 2 then _G.LexusConfig.SDWAimTrigger = "scope"
+        elseif val == 3 then _G.LexusConfig.SDWAimTrigger = "any"
+        else _G.LexusConfig.SDWAimTrigger = "shoot" end
+        return true
+      end },
+    { Key = "Core_AimVis", UI = AliasMap.Switcher, Text = "  └ Visible Only", ExpandHandle = "Core_V1Aim",
+      GetFunc = function() return _G.LexusConfig.SDWAimVisibleOnly ~= false end,
+      SetFunc = function(c,v) _G.LexusConfig.SDWAimVisibleOnly = v; return true end },
+    { Key = "Core_AimBots", UI = AliasMap.Switcher, Text = "  └ Target Bots", ExpandHandle = "Core_V1Aim",
+      GetFunc = function() return _G.LexusConfig.SDWAimTargetBots ~= false end,
+      SetFunc = function(c,v) _G.LexusConfig.SDWAimTargetBots = v; return true end },
+}
+
+local StackVehicle = {
+    { Key = "GK_VehESP", UI = AliasMap.Switcher, Text = "Vehicle ESP", ExpandIndex = 0, GetFunc = function() return _G.LexusConfig.VehicleESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.VehicleESPEnabled = v; return D() end },
+    { Key = "GK_C_Veh", UI = AliasMap.Switcher, Text = " + Vehicle Color", ExpandHandle = "GK_VehESP", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorVehicle or 5 end, SetFunc = function(c,v) _G.LexusConfig.ColorVehicle = v; return D() end },
+    { Key = "GK_TextSizeVeh", UI = AliasMap.Slider, Text = " + Text Size (%0-%100)", ExpandHandle = "GK_VehESP", MinValue = 0, MaxValue = 100, GetFunc = function() return _G.LexusConfig.TextSizeVehUI or 50 end, SetFunc = function(c,v) _G.LexusConfig.TextSizeVehUI = tonumber(v) or 50; return D() end },
+}
+local uniqueVehs = {"Buggy", "Dacia", "UAZ", "Motorcycle", "Coupe RB", "Mirado", "Monster Truck", "Rony", "Scooter", "Snowmobile", "Tukshai", "Bike", "UTV", "Motor Glider", "PG-117 (Boat)", "Aquarail (Jet Ski)", "Hovercraft", "Horse", "Tank", "BRDM-2"}
+for i=1, #uniqueVehs do
+    local vName = uniqueVehs[i]
+    local cfgKey = "VehESP_" .. string.gsub(vName, " ", "")
+    table.insert(StackVehicle, { Key = "GK_"..cfgKey, UI = AliasMap.Switcher, Text = " + Show " .. vName, ExpandHandle = "GK_VehESP", GetFunc = function() return _G.LexusConfig[cfgKey] == nil and true or _G.LexusConfig[cfgKey] end, SetFunc = function(c,v) _G.LexusConfig[cfgKey] = v; return D() end })
+end
+
+local StackMisc = {
+    { Key = "GK_iPadView", UI = AliasMap.Switcher, Text = "iPad View", GetFunc = function() return _G.LexusConfig.iPadViewEnabled end, SetFunc = function(c,v) _G.LexusConfig.iPadViewEnabled = v; pcall(function() if _G.ApplyiPadView then local ok,err = pcall(_G.ApplyiPadView); if not ok then LogError("ApplyiPadView", err) end end end); if v and _G.SDW_EnsureiPadHold then pcall(_G.SDW_EnsureiPadHold) end; return D() end },
+    { Key = "GK_iPadFOV", UI = AliasMap.Slider, Text = " + iPad FOV (100-120)", MinValue = 1, MaxValue = 100, GetFunc = function() local v = _G.LexusConfig.iPadViewFOV or 110; return math.floor(((v-100)/20)*100) end, SetFunc = function(c,v) local val = tonumber(v) or 0; if val > 100 then val = 100 end; if val < 0 then val = 0 end; _G.LexusConfig.iPadViewFOV = 100 + (val/100)*20; pcall(function() if _G.ApplyiPadView then local ok,err = pcall(_G.ApplyiPadView); if not ok then LogError("ApplyiPadView", err) end end end); return D() end },
+    { Key = "GK_NoGrass", UI = AliasMap.Switcher, Text = "No Grass / No Fog", GetFunc = function() return _G.LexusConfig.VisualCleanupEnabled end, SetFunc = function(c,v) _G.LexusConfig.VisualCleanupEnabled = v; pcall(function() if _G.ApplyEnvironment then local ok,err = pcall(_G.ApplyEnvironment); if not ok then LogError("ApplyEnvironment", err) end end end); return D() end },
+    { Key = "GK_FakeHWID", UI = AliasMap.Switcher, Text = "Fake HWID (Device Ban Prevention)", GetFunc = function() return _G.LexusConfig.FakeHWID == nil and true or _G.LexusConfig.FakeHWID end, SetFunc = function(c,v) _G.LexusConfig.FakeHWID = v; return D() end },
+    { Key = "GK_UnlockFPS165", UI = AliasMap.Switcher, Text = "Unlock 165 FPS", GetFunc = function() return _G.LexusConfig.UnlockFPS165 ~= false end, SetFunc = function(c,v) _G.LexusConfig.UnlockFPS165 = v; if v then if _G.SDW_Patch165 then pcall(_G.SDW_Patch165) end; if _G.SDW_Force165 then pcall(_G.SDW_Force165) end end; return D() end },
+
+    -- Item ESP (moved from ITEM category)
+    { Key = "GK_ItemESP", UI = AliasMap.Switcher, Text = "Item ESP", ExpandIndex = 0, GetFunc = function() return _G.LexusConfig.ItemESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.ItemESPEnabled=v; if v then StartVisuals() end; return D() end },
+    { Key = "GK_C_Item", UI = AliasMap.Switcher, Text = " + Item Color", ExpandHandle = "GK_ItemESP", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorItem or 2 end, SetFunc = function(c,v) _G.LexusConfig.ColorItem = v; return D() end },
+    { Key = "GK_ItemDist", UI = AliasMap.Slider, Text = " + Distance (10-100 m)", ExpandHandle = "GK_ItemESP", MinValue=10, MaxValue=100, GetFunc=function() return tonumber(_G.LexusConfig.ItemESPMaxDistance) or 50 end, SetFunc=function(c,v) _G.LexusConfig.ItemESPMaxDistance=tonumber(v) or 50; return D() end },
+    { Key = "GK_TextSizeItem", UI = AliasMap.Slider, Text = " + Text Size (%0-%100)", ExpandHandle = "GK_ItemESP", MinValue = 0, MaxValue = 100, GetFunc = function() return _G.LexusConfig.TextSizeItemUI or 50 end, SetFunc = function(c,v) _G.LexusConfig.TextSizeItemUI = tonumber(v) or 50; return D() end },
+
+    -- Guns
+    { Key = "GK_Item_M416", UI = AliasMap.Switcher, Text = " + M416", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_M416 ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_M416=v; return D() end },
+    { Key = "GK_Item_AKM", UI = AliasMap.Switcher, Text = " + AKM", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_AKM ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_AKM=v; return D() end },
+    { Key = "GK_Item_M762", UI = AliasMap.Switcher, Text = " + M762", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_M762 ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_M762=v; return D() end },
+    { Key = "GK_Item_SCARL", UI = AliasMap.Switcher, Text = " + SCAR-L", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_SCARL ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_SCARL=v; return D() end },
+    { Key = "GK_Item_UMP", UI = AliasMap.Switcher, Text = " + UMP45", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_UMP ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_UMP=v; return D() end },
+    { Key = "GK_Item_UZI", UI = AliasMap.Switcher, Text = " + UZI", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_UZI ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_UZI=v; return D() end },
+    { Key = "GK_Item_AWM", UI = AliasMap.Switcher, Text = " + AWM", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_AWM ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_AWM=v; return D() end },
+    { Key = "GK_Item_M24", UI = AliasMap.Switcher, Text = " + M24", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_M24 ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_M24=v; return D() end },
+
+    -- Scopes
+    { Key = "GK_Item_Scope3x", UI = AliasMap.Switcher, Text = " + 3x Scope", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Scope3x ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Scope3x=v; return D() end },
+    { Key = "GK_Item_Scope4x", UI = AliasMap.Switcher, Text = " + 4x Scope", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Scope4x ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Scope4x=v; return D() end },
+    { Key = "GK_Item_Scope6x", UI = AliasMap.Switcher, Text = " + 6x Scope", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Scope6x ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Scope6x=v; return D() end },
+    { Key = "GK_Item_Scope8x", UI = AliasMap.Switcher, Text = " + 8x Scope", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Scope8x ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Scope8x=v; return D() end },
+
+    -- Grenades
+    { Key = "GK_Item_Frag", UI = AliasMap.Switcher, Text = " + Frag Grenade", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Frag ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Frag=v; return D() end },
+    { Key = "GK_Item_Smoke", UI = AliasMap.Switcher, Text = " + Smoke Grenade", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Smoke ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Smoke=v; return D() end },
+    { Key = "GK_Item_Molotov", UI = AliasMap.Switcher, Text = " + Molotov", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Molotov ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Molotov=v; return D() end },
+}
+
+local StackSkin = {
+    { Key = "ModMenu_ModSkin", UI = AliasMap.TitleSwitcher, Text = "> Mod Skin System", ExpandIndex = 0, GetFunc = function() return _G.LexusConfig.ModSkin end, SetFunc = function(c,v) _G.LexusConfig.ModSkin = v; _G.LexusConfig.SkinOptionOpen = v; if v and _G.ForceRefreshSkinMaps then _G.ForceRefreshSkinMaps() end; return D() end },
+
+    -- Outfits
+    { Key = "ModMenu_Skin_Suit", UI = AliasMap.Slider, Text = " + Outfit", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 80, GetFunc = function() return _G.LexusState.CustomTextData.SkinSuit or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinSuit = v; if _G.OutfitSkins and _G.OutfitSkins.Suit and _G.OutfitSkins.Suit[v] then _G.OutfitMap.Suit = _G.OutfitSkins.Suit[v] end; return D() end },
+    { Key = "ModMenu_Skin_Bag", UI = AliasMap.Slider, Text = " + Backpack", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 16, GetFunc = function() return _G.LexusState.CustomTextData.SkinBag or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinBag = v; if _G.OutfitSkins and _G.OutfitSkins.Bag and _G.OutfitSkins.Bag[v] then _G.OutfitMap.Bag = _G.OutfitSkins.Bag[v] end; return D() end },
+    { Key = "ModMenu_Skin_Helmet", UI = AliasMap.Slider, Text = " + Helmet", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 11, GetFunc = function() return _G.LexusState.CustomTextData.SkinHelmet or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinHelmet = v; if _G.OutfitSkins and _G.OutfitSkins.Helmet and _G.OutfitSkins.Helmet[v] then _G.OutfitMap.Helmet = _G.OutfitSkins.Helmet[v] end; return D() end },
+
+    -- Weapons
+    { Key = "ModMenu_Skin_M416", UI = AliasMap.Slider, Text = " + M416", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 9, GetFunc = function() return _G.LexusState.CustomTextData.SkinM416 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinM416 = v; if _G.skinIdMappings and _G.skinIdMappings[101004] and _G.skinIdMappings[101004][v] then _G.WeaponSkinMap[101004] = _G.skinIdMappings[101004][v] end; return D() end },
+    { Key = "ModMenu_Skin_AKM", UI = AliasMap.Slider, Text = " + AKM", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 8, GetFunc = function() return _G.LexusState.CustomTextData.SkinAKM or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinAKM = v; if _G.skinIdMappings and _G.skinIdMappings[101001] and _G.skinIdMappings[101001][v] then _G.WeaponSkinMap[101001] = _G.skinIdMappings[101001][v] end; return D() end },
+    { Key = "ModMenu_Skin_SCAR", UI = AliasMap.Slider, Text = " + SCAR-L", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 8, GetFunc = function() return _G.LexusState.CustomTextData.SkinSCAR or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinSCAR = v; if _G.skinIdMappings and _G.skinIdMappings[101003] and _G.skinIdMappings[101003][v] then _G.WeaponSkinMap[101003] = _G.skinIdMappings[101003][v] end; return D() end },
+    { Key = "ModMenu_Skin_M762", UI = AliasMap.Slider, Text = " + Beryl M762", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 9, GetFunc = function() return _G.LexusState.CustomTextData.SkinM762 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinM762 = v; if _G.skinIdMappings and _G.skinIdMappings[101008] and _G.skinIdMappings[101008][v] then _G.WeaponSkinMap[101008] = _G.skinIdMappings[101008][v] end; return D() end },
+    { Key = "ModMenu_Skin_AUG", UI = AliasMap.Slider, Text = " + AUG", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 7, GetFunc = function() return _G.LexusState.CustomTextData.SkinAUG or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinAUG = v; if _G.skinIdMappings and _G.skinIdMappings[101006] and _G.skinIdMappings[101006][v] then _G.WeaponSkinMap[101006] = _G.skinIdMappings[101006][v] end; return D() end },
+    { Key = "ModMenu_Skin_UMP", UI = AliasMap.Slider, Text = " + UMP45", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 5, GetFunc = function() return _G.LexusState.CustomTextData.SkinUMP or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinUMP = v; if _G.skinIdMappings and _G.skinIdMappings[102002] and _G.skinIdMappings[102002][v] then _G.WeaponSkinMap[102002] = _G.skinIdMappings[102002][v] end; return D() end },
+    { Key = "ModMenu_Skin_UZI", UI = AliasMap.Slider, Text = " + UZI", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinUZI or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinUZI = v; if _G.skinIdMappings and _G.skinIdMappings[102001] and _G.skinIdMappings[102001][v] then _G.WeaponSkinMap[102001] = _G.skinIdMappings[102001][v] end; return D() end },
+    { Key = "ModMenu_Skin_Groza", UI = AliasMap.Slider, Text = " + Groza", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinGroza or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinGroza = v; if _G.skinIdMappings and _G.skinIdMappings[101005] and _G.skinIdMappings[101005][v] then _G.WeaponSkinMap[101005] = _G.skinIdMappings[101005][v] end; return D() end },
+    { Key = "ModMenu_Skin_S12K", UI = AliasMap.Slider, Text = " + S12K", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinS12K or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinS12K = v; if _G.skinIdMappings and _G.skinIdMappings[104003] and _G.skinIdMappings[104003][v] then _G.WeaponSkinMap[104003] = _G.skinIdMappings[104003][v] end; return D() end },
+    { Key = "ModMenu_Skin_DBS", UI = AliasMap.Slider, Text = " + DBS", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 3, GetFunc = function() return _G.LexusState.CustomTextData.SkinDBS or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinDBS = v; if _G.skinIdMappings and _G.skinIdMappings[104004] and _G.skinIdMappings[104004][v] then _G.WeaponSkinMap[104004] = _G.skinIdMappings[104004][v] end; return D() end },
+    { Key = "ModMenu_Skin_ASM", UI = AliasMap.Slider, Text = " + ASM", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinASM or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinASM = v; if _G.skinIdMappings and _G.skinIdMappings[101101] and _G.skinIdMappings[101101][v] then _G.WeaponSkinMap[101101] = _G.skinIdMappings[101101][v] end; return D() end },
+    { Key = "ModMenu_Skin_QBZ", UI = AliasMap.Slider, Text = " + QBZ", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 6, GetFunc = function() return _G.LexusState.CustomTextData.SkinQBZ or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinQBZ = v; if _G.skinIdMappings and _G.skinIdMappings[101007] and _G.skinIdMappings[101007][v] then _G.WeaponSkinMap[101007] = _G.skinIdMappings[101007][v] end; return D() end },
+    { Key = "ModMenu_Skin_Honey", UI = AliasMap.Slider, Text = " + Honey Badger", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinHoney or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinHoney = v; if _G.skinIdMappings and _G.skinIdMappings[101012] and _G.skinIdMappings[101012][v] then _G.WeaponSkinMap[101012] = _G.skinIdMappings[101012][v] end; return D() end },
+    { Key = "ModMenu_Skin_M16A4", UI = AliasMap.Slider, Text = " + M16A4", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 5, GetFunc = function() return _G.LexusState.CustomTextData.SkinM16A4 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinM16A4 = v; if _G.skinIdMappings and _G.skinIdMappings[101002] and _G.skinIdMappings[101002][v] then _G.WeaponSkinMap[101002] = _G.skinIdMappings[101002][v] end; return D() end },
+    { Key = "ModMenu_Skin_ACE32", UI = AliasMap.Slider, Text = " + ACE32", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 6, GetFunc = function() return _G.LexusState.CustomTextData.SkinACE32 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinACE32 = v; if _G.skinIdMappings and _G.skinIdMappings[101102] and _G.skinIdMappings[101102][v] then _G.WeaponSkinMap[101102] = _G.skinIdMappings[101102][v] end; return D() end },
+    { Key = "ModMenu_Skin_Kar98k", UI = AliasMap.Slider, Text = " + Kar98k", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 8, GetFunc = function() return _G.LexusState.CustomTextData.SkinKar98k or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinKar98k = v; if _G.skinIdMappings and _G.skinIdMappings[103001] and _G.skinIdMappings[103001][v] then _G.WeaponSkinMap[103001] = _G.skinIdMappings[103001][v] end; return D() end },
+    { Key = "ModMenu_Skin_M24", UI = AliasMap.Slider, Text = " + M24", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 7, GetFunc = function() return _G.LexusState.CustomTextData.SkinM24 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinM24 = v; if _G.skinIdMappings and _G.skinIdMappings[103002] and _G.skinIdMappings[103002][v] then _G.WeaponSkinMap[103002] = _G.skinIdMappings[103002][v] end; return D() end },
+    { Key = "ModMenu_Skin_AWM", UI = AliasMap.Slider, Text = " + AWM", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 11, GetFunc = function() return _G.LexusState.CustomTextData.SkinAWM or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinAWM = v; if _G.skinIdMappings and _G.skinIdMappings[103003] and _G.skinIdMappings[103003][v] then _G.WeaponSkinMap[103003] = _G.skinIdMappings[103003][v] end; return D() end },
+
+    -- Vehicles
+    { Key = "ModMenu_Skin_Dacia", UI = AliasMap.Slider, Text = " + Dacia", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 34, GetFunc = function() return _G.LexusState.CustomTextData.SkinDacia or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinDacia = v; if _G.VehicleSkins and _G.VehicleSkins[1903001] and _G.VehicleSkins[1903001][v] then _G.VehicleSkinMap[1903001] = _G.VehicleSkins[1903001][v] end; return D() end },
+    { Key = "ModMenu_Skin_UAZ", UI = AliasMap.Slider, Text = " + UAZ", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 16, GetFunc = function() return _G.LexusState.CustomTextData.SkinUAZ or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinUAZ = v; if _G.VehicleSkins and _G.VehicleSkins[1908001] and _G.VehicleSkins[1908001][v] then _G.VehicleSkinMap[1908001] = _G.VehicleSkins[1908001][v] end; return D() end },
+    { Key = "ModMenu_Skin_Coupe", UI = AliasMap.Slider, Text = " + Coupe RB", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 56, GetFunc = function() return _G.LexusState.CustomTextData.SkinCoupe or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinCoupe = v; if _G.VehicleSkins and _G.VehicleSkins[1961001] and _G.VehicleSkins[1961001][v] then _G.VehicleSkinMap[1961001] = _G.VehicleSkins[1961001][v] end; return D() end },
+    { Key = "ModMenu_Skin_Buggy", UI = AliasMap.Slider, Text = " + Buggy", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 11, GetFunc = function() return _G.LexusState.CustomTextData.SkinBuggy or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinBuggy = v; if _G.VehicleSkins and _G.VehicleSkins[1907002] and _G.VehicleSkins[1907002][v] then _G.VehicleSkinMap[1907001] = _G.VehicleSkins[1907002][v]; _G.VehicleSkinMap[1907002] = _G.VehicleSkins[1907002][v] end; return D() end },
+    { Key = "ModMenu_Skin_Mirado", UI = AliasMap.Slider, Text = " + Mirado", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 5, GetFunc = function() return _G.LexusState.CustomTextData.SkinMirado or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinMirado = v; if _G.VehicleSkins and _G.VehicleSkins[1915004] and _G.VehicleSkins[1915004][v] then _G.VehicleSkinMap[1915001] = _G.VehicleSkins[1915004][v]; _G.VehicleSkinMap[1915004] = _G.VehicleSkins[1915004][v] end; return D() end }
+}
+
+-- PAGE DEFINITION
+if not SettingPageDefine.ModMenu then
+    SettingPageDefine.ModMenu = {
+        Key = "ModMenu",
+        Text = 999000,
+        UIKey = "Setting_Page_Privacy",
+        Category = {
+            { Key = "Cat_WH", Text = "> WALLHACK", Stack = StackWallhack },
+            { Key = "Cat_ESP", Text = "> ESP INFO", Stack = StackESP },
+            { Key = "Cat_Item", Text = "> AIMBOT", Stack = StackItem },
+            { Key = "Cat_Veh", Text = "> VEHICLE ESP", Stack = StackVehicle },
+            { Key = "Cat_Skin", Text = "> MOD SKIN", Stack = StackSkin },
+            { Key = "Cat_Misc", Text = "> MISC SETTINGS", Stack = StackMisc }
         }
-
-        local StackESP = {
-            { Key = "GK_HPBar", UI = AliasMap.Switcher, Text = "Çatışma Bilgisi ESP", GetFunc = function() return _G.LexusConfig.HealthBarESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.HealthBarESPEnabled = v; return D() end },
-            { Key = "GK_C_ETxt", UI = AliasMap.Switcher, Text = " + Düşman Metin Rengi", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorEnemyText or 0 end, SetFunc = function(c,v) _G.LexusConfig.ColorEnemyText = v; return D() end },
-            { Key = "GK_C_BTxt", UI = AliasMap.Switcher, Text = " + Bot Metin Rengi", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorBotText or 1 end, SetFunc = function(c,v) _G.LexusConfig.ColorBotText = v; return D() end },
-            { Key = "GK_TextSizeEnemy", UI = AliasMap.Slider, Text = " + Metin Boyutu (%0-%100)", MinValue = 0, MaxValue = 100, GetFunc = function() return _G.LexusConfig.TextSizeEnemyUI or 50 end, SetFunc = function(c,v) _G.LexusConfig.TextSizeEnemyUI = tonumber(v) or 50; return D() end },
-            { Key = "GK_MapESP", UI = AliasMap.Switcher, Text = "Mini Harita Takibi", GetFunc = function() return _G.LexusConfig.MapESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.MapESPEnabled = v; return D() end },
-            { Key = "GK_Snapline", UI = AliasMap.Switcher, Text = "ESP Çizgisi", GetFunc = function() return _G.LexusConfig.SnaplineESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.SnaplineESPEnabled = v; if v then StartVisuals() else SnaplineESP.Clear() end; return D() end },
-            { Key = "GK_BombESP", UI = AliasMap.Switcher, Text = "Bomba ESP", GetFunc = function() return _G.LexusConfig.BombESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.BombESPEnabled = v; if v then StartVisuals() end; return D() end },
-
-            { Key = "GK_Counter", UI = AliasMap.Switcher, Text = "Düşman Sayacı HUD", GetFunc = function() return _G.LexusConfig.EnemyCounterEnabled end, SetFunc = function(c,v) _G.LexusConfig.EnemyCounterEnabled = v; if not v then if GK_DestroyWidget then GK_DestroyWidget() end elseif _G.GK_WIDGET and SafeIsValid(_G.GK_WIDGET) then pcall(function() _G.GK_WIDGET:SetWidgetVisibility(import("ESlateVisibility").Collapsed) end) end; if v and not _G.VisualsStarted then pcall(StartVisuals) end; return D() end },
-            { Key = "GK_BoxESP", UI = AliasMap.Switcher, Text = "Kutu ESP", GetFunc = function() return _G.LexusConfig.BoxESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.BoxESPEnabled = v; if v then StartVisuals() end; return D() end },
-        }
-
-        local StackItem = {
-            { Key = "Core_V1Aim", UI = AliasMap.TitleSwitcher, Text = "Aimbot AÇ/KAPAT", ExpandIndex = 0,
-              GetFunc = function() return _G.LexusConfig.SDWAimbot == true or _G.LexusConfig.SDWAimbot == 1 or _G.LexusConfig.AimbotEnabled == true end,
-              SetFunc = function(c,v)
-                _G.LexusConfig.SDWAimbot = v
-                _G.LexusConfig.AimbotEnabled = v
-                return D()
-              end },
-            { Key = "Core_AimBone", UI = AliasMap.Slider, Text = "  └ Nişan Kemiği (1 Göğüs  2 Karın  3 Pelvis)", ExpandHandle = "Core_V1Aim",
-              MinValue = 1, MaxValue = 3, GetFunc = function() return tonumber(_G.LexusConfig.SDWAimBone) or 3 end,
-              SetFunc = function(c,v) local val = math.floor((tonumber(v) or 3) + 0.5); if val < 1 then val = 1 end; if val > 3 then val = 3 end; _G.LexusConfig.SDWAimBone = val; return true end },
-            { Key = "Core_AimFOV", UI = AliasMap.Slider, Text = "  └ Nişan FOV (önerilen 8)", ExpandHandle = "Core_V1Aim",
-              MinValue = 3, MaxValue = 25, GetFunc = function() return tonumber(_G.LexusConfig.SDWAimFOV) or 8 end,
-              SetFunc = function(c,v) local val = math.floor((tonumber(v) or 8) + 0.5); if val < 3 then val = 3 end; if val > 25 then val = 25 end; _G.LexusConfig.SDWAimFOV = val; return true end },
-            { Key = "Core_AimSpeed", UI = AliasMap.Slider, Text = "  └ Nişan Hızı (önerilen 20)", ExpandHandle = "Core_V1Aim",
-              MinValue = 5, MaxValue = 50, GetFunc = function() return tonumber(_G.LexusConfig.SDWAimSpeed) or 20 end,
-              SetFunc = function(c,v) local val = math.floor((tonumber(v) or 20) + 0.5); if val < 5 then val = 5 end; if val > 50 then val = 50 end; _G.LexusConfig.SDWAimSpeed = val; return true end },
-            { Key = "Core_AimDist", UI = AliasMap.Slider, Text = "  └ Maksimum Mesafe (önerilen 250 m)", ExpandHandle = "Core_V1Aim",
-              MinValue = 50, MaxValue = 400, GetFunc = function() return tonumber(_G.LexusConfig.SDWAimMaxDist) or 250 end,
-              SetFunc = function(c,v) local val = math.floor((tonumber(v) or 250) + 0.5); if val < 50 then val = 50 end; if val > 400 then val = 400 end; _G.LexusConfig.SDWAimMaxDist = val; return true end },
-            { Key = "Core_AimTrigger", UI = AliasMap.Slider, Text = "  └ Tetik (1 Ateş=varsayılan  2 Dürbün  3 Herhangi)", ExpandHandle = "Core_V1Aim",
-              MinValue = 1, MaxValue = 3,
-              GetFunc = function()
-                local t = _G.LexusConfig.SDWAimTrigger or "shoot"
-                if t == "scope" then return 2 end
-                if t == "any" then return 3 end
-                return 1
-              end,
-              SetFunc = function(c,v)
-                local val = math.floor((tonumber(v) or 1) + 0.5)
-                if val == 2 then _G.LexusConfig.SDWAimTrigger = "scope"
-                elseif val == 3 then _G.LexusConfig.SDWAimTrigger = "any"
-                else _G.LexusConfig.SDWAimTrigger = "shoot" end
-                return true
-              end },
-            { Key = "Core_AimVis", UI = AliasMap.Switcher, Text = "  └ Sadece Görünür", ExpandHandle = "Core_V1Aim",
-              GetFunc = function() return _G.LexusConfig.SDWAimVisibleOnly ~= false end,
-              SetFunc = function(c,v) _G.LexusConfig.SDWAimVisibleOnly = v; return true end },
-            { Key = "Core_AimBots", UI = AliasMap.Switcher, Text = "  └ Botları Hedefle", ExpandHandle = "Core_V1Aim",
-              GetFunc = function() return _G.LexusConfig.SDWAimTargetBots ~= false end,
-              SetFunc = function(c,v) _G.LexusConfig.SDWAimTargetBots = v; return true end },
-        }
-
-        local StackVehicle = {
-            { Key = "GK_VehESP", UI = AliasMap.Switcher, Text = "Araç ESP", ExpandIndex = 0, GetFunc = function() return _G.LexusConfig.VehicleESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.VehicleESPEnabled = v; return D() end },
-            { Key = "GK_C_Veh", UI = AliasMap.Switcher, Text = " + Araç Rengi", ExpandHandle = "GK_VehESP", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorVehicle or 5 end, SetFunc = function(c,v) _G.LexusConfig.ColorVehicle = v; return D() end },
-            { Key = "GK_TextSizeVeh", UI = AliasMap.Slider, Text = " + Metin Boyutu (%0-%100)", ExpandHandle = "GK_VehESP", MinValue = 0, MaxValue = 100, GetFunc = function() return _G.LexusConfig.TextSizeVehUI or 50 end, SetFunc = function(c,v) _G.LexusConfig.TextSizeVehUI = tonumber(v) or 50; return D() end },
-        }
-        local uniqueVehs = {"Buggy", "Dacia", "UAZ", "Motorcycle", "Coupe RB", "Mirado", "Monster Truck", "Rony", "Scooter", "Snowmobile", "Tukshai", "Bike", "UTV", "Motor Glider", "PG-117 (Boat)", "Aquarail (Jet Ski)", "Hovercraft", "Horse", "Tank", "BRDM-2"}
-        for i=1, #uniqueVehs do
-            local vName = uniqueVehs[i]
-            local cfgKey = "VehESP_" .. string.gsub(vName, " ", "")
-            table.insert(StackVehicle, { Key = "GK_"..cfgKey, UI = AliasMap.Switcher, Text = " + Göster " .. vName, ExpandHandle = "GK_VehESP", GetFunc = function() return _G.LexusConfig[cfgKey] == nil and true or _G.LexusConfig[cfgKey] end, SetFunc = function(c,v) _G.LexusConfig[cfgKey] = v; return D() end })
-        end
-
-        local StackMisc = {
-            { Key = "GK_iPadView", UI = AliasMap.Switcher, Text = "iPad Görünümü", GetFunc = function() return _G.LexusConfig.iPadViewEnabled end, SetFunc = function(c,v) _G.LexusConfig.iPadViewEnabled = v; pcall(function() if _G.ApplyiPadView then local ok,err = pcall(_G.ApplyiPadView); if not ok then LogError("ApplyiPadView", err) end end end); if v and _G.SDW_EnsureiPadHold then pcall(_G.SDW_EnsureiPadHold) end; return D() end },
-            { Key = "GK_iPadFOV", UI = AliasMap.Slider, Text = " + iPad FOV (100-120)", MinValue = 1, MaxValue = 100, GetFunc = function() local v = _G.LexusConfig.iPadViewFOV or 110; return math.floor(((v-100)/20)*100) end, SetFunc = function(c,v) local val = tonumber(v) or 0; if val > 100 then val = 100 end; if val < 0 then val = 0 end; _G.LexusConfig.iPadViewFOV = 100 + (val/100)*20; pcall(function() if _G.ApplyiPadView then local ok,err = pcall(_G.ApplyiPadView); if not ok then LogError("ApplyiPadView", err) end end end); return D() end },
-            { Key = "GK_NoGrass", UI = AliasMap.Switcher, Text = "Çim Yok / Sis Yok", GetFunc = function() return _G.LexusConfig.VisualCleanupEnabled end, SetFunc = function(c,v) _G.LexusConfig.VisualCleanupEnabled = v; pcall(function() if _G.ApplyEnvironment then local ok,err = pcall(_G.ApplyEnvironment); if not ok then LogError("ApplyEnvironment", err) end end end); return D() end },
-            { Key = "GK_FakeHWID", UI = AliasMap.Switcher, Text = "Sahte HWID (Cihaz Yasağı Önleme)", GetFunc = function() return _G.LexusConfig.FakeHWID == nil and true or _G.LexusConfig.FakeHWID end, SetFunc = function(c,v) _G.LexusConfig.FakeHWID = v; return D() end },
-            { Key = "GK_UnlockFPS165", UI = AliasMap.Switcher, Text = "165 FPS Kilidini Aç", GetFunc = function() return _G.LexusConfig.UnlockFPS165 ~= false end, SetFunc = function(c,v) _G.LexusConfig.UnlockFPS165 = v; if v then if _G.SDW_Patch165 then pcall(_G.SDW_Patch165) end; if _G.SDW_Force165 then pcall(_G.SDW_Force165) end end; return D() end },
-
-            -- Eşya ESP (moved from ITEM category)
-            { Key = "GK_ItemESP", UI = AliasMap.Switcher, Text = "Eşya ESP", ExpandIndex = 0, GetFunc = function() return _G.LexusConfig.ItemESPEnabled end, SetFunc = function(c,v) _G.LexusConfig.ItemESPEnabled=v; if v then StartVisuals() end; return D() end },
-            { Key = "GK_C_Item", UI = AliasMap.Switcher, Text = " + Eşya Rengi", ExpandHandle = "GK_ItemESP", SwitcherText = colNames, SwitcherValue = colVals, GetFunc = function() return _G.LexusConfig.ColorItem or 2 end, SetFunc = function(c,v) _G.LexusConfig.ColorItem = v; return D() end },
-            { Key = "GK_ItemDist", UI = AliasMap.Slider, Text = " + Mesafe (10-100 m)", ExpandHandle = "GK_ItemESP", MinValue=10, MaxValue=100, GetFunc=function() return tonumber(_G.LexusConfig.ItemESPMaxDistance) or 50 end, SetFunc=function(c,v) _G.LexusConfig.ItemESPMaxDistance=tonumber(v) or 50; return D() end },
-            { Key = "GK_TextSizeItem", UI = AliasMap.Slider, Text = " + Metin Boyutu (%0-%100)", ExpandHandle = "GK_ItemESP", MinValue = 0, MaxValue = 100, GetFunc = function() return _G.LexusConfig.TextSizeItemUI or 50 end, SetFunc = function(c,v) _G.LexusConfig.TextSizeItemUI = tonumber(v) or 50; return D() end },
-
-            -- Guns
-            { Key = "GK_Item_M416", UI = AliasMap.Switcher, Text = " + M416", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_M416 ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_M416=v; return D() end },
-            { Key = "GK_Item_AKM", UI = AliasMap.Switcher, Text = " + AKM", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_AKM ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_AKM=v; return D() end },
-            { Key = "GK_Item_M762", UI = AliasMap.Switcher, Text = " + M762", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_M762 ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_M762=v; return D() end },
-            { Key = "GK_Item_SCARL", UI = AliasMap.Switcher, Text = " + SCAR-L", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_SCARL ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_SCARL=v; return D() end },
-            { Key = "GK_Item_UMP", UI = AliasMap.Switcher, Text = " + UMP45", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_UMP ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_UMP=v; return D() end },
-            { Key = "GK_Item_UZI", UI = AliasMap.Switcher, Text = " + UZI", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_UZI ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_UZI=v; return D() end },
-            { Key = "GK_Item_AWM", UI = AliasMap.Switcher, Text = " + AWM", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_AWM ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_AWM=v; return D() end },
-            { Key = "GK_Item_M24", UI = AliasMap.Switcher, Text = " + M24", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_M24 ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_M24=v; return D() end },
-
-            -- Scopes
-            { Key = "GK_Item_Scope3x", UI = AliasMap.Switcher, Text = " + 3x Scope", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Scope3x ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Scope3x=v; return D() end },
-            { Key = "GK_Item_Scope4x", UI = AliasMap.Switcher, Text = " + 4x Scope", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Scope4x ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Scope4x=v; return D() end },
-            { Key = "GK_Item_Scope6x", UI = AliasMap.Switcher, Text = " + 6x Scope", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Scope6x ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Scope6x=v; return D() end },
-            { Key = "GK_Item_Scope8x", UI = AliasMap.Switcher, Text = " + 8x Scope", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Scope8x ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Scope8x=v; return D() end },
-
-            -- Grenades
-            { Key = "GK_Item_Frag", UI = AliasMap.Switcher, Text = " + El Bombası", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Frag ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Frag=v; return D() end },
-            { Key = "GK_Item_Smoke", UI = AliasMap.Switcher, Text = " + Sis Bombası", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Smoke ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Smoke=v; return D() end },
-            { Key = "GK_Item_Molotov", UI = AliasMap.Switcher, Text = " + Molotof", ExpandHandle="GK_ItemESP", GetFunc=function() return _G.LexusConfig.EspItem_Molotov ~= false end, SetFunc=function(c,v) _G.LexusConfig.EspItem_Molotov=v; return D() end },
-        }
-
-        local StackSkin = {
-            { Key = "ModMenu_ModSkin", UI = AliasMap.TitleSwitcher, Text = "> Mod Skin Sistemi", ExpandIndex = 0, GetFunc = function() return _G.LexusConfig.ModSkin end, SetFunc = function(c,v) _G.LexusConfig.ModSkin = v; _G.LexusConfig.SkinOptionOpen = v; if v and _G.ForceRefreshSkinMaps then _G.ForceRefreshSkinMaps() end; return D() end },
-
-            -- Outfits
-            { Key = "ModMenu_Skin_Suit", UI = AliasMap.Slider, Text = " + Kıyafet", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 80, GetFunc = function() return _G.LexusState.CustomTextData.SkinSuit or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinSuit = v; if _G.OutfitSkins and _G.OutfitSkins.Suit and _G.OutfitSkins.Suit[v] then _G.OutfitMap.Suit = _G.OutfitSkins.Suit[v] end; return D() end },
-            { Key = "ModMenu_Skin_Bag", UI = AliasMap.Slider, Text = " + Sırt Çantası", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 16, GetFunc = function() return _G.LexusState.CustomTextData.SkinBag or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinBag = v; if _G.OutfitSkins and _G.OutfitSkins.Bag and _G.OutfitSkins.Bag[v] then _G.OutfitMap.Bag = _G.OutfitSkins.Bag[v] end; return D() end },
-            { Key = "ModMenu_Skin_Helmet", UI = AliasMap.Slider, Text = " + Kask", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 11, GetFunc = function() return _G.LexusState.CustomTextData.SkinHelmet or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinHelmet = v; if _G.OutfitSkins and _G.OutfitSkins.Helmet and _G.OutfitSkins.Helmet[v] then _G.OutfitMap.Helmet = _G.OutfitSkins.Helmet[v] end; return D() end },
-
-            -- Weapons
-            { Key = "ModMenu_Skin_M416", UI = AliasMap.Slider, Text = " + M416", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 9, GetFunc = function() return _G.LexusState.CustomTextData.SkinM416 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinM416 = v; if _G.skinIdMappings and _G.skinIdMappings[101004] and _G.skinIdMappings[101004][v] then _G.WeaponSkinMap[101004] = _G.skinIdMappings[101004][v] end; return D() end },
-            { Key = "ModMenu_Skin_AKM", UI = AliasMap.Slider, Text = " + AKM", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 8, GetFunc = function() return _G.LexusState.CustomTextData.SkinAKM or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinAKM = v; if _G.skinIdMappings and _G.skinIdMappings[101001] and _G.skinIdMappings[101001][v] then _G.WeaponSkinMap[101001] = _G.skinIdMappings[101001][v] end; return D() end },
-            { Key = "ModMenu_Skin_SCAR", UI = AliasMap.Slider, Text = " + SCAR-L", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 8, GetFunc = function() return _G.LexusState.CustomTextData.SkinSCAR or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinSCAR = v; if _G.skinIdMappings and _G.skinIdMappings[101003] and _G.skinIdMappings[101003][v] then _G.WeaponSkinMap[101003] = _G.skinIdMappings[101003][v] end; return D() end },
-            { Key = "ModMenu_Skin_M762", UI = AliasMap.Slider, Text = " + Beryl M762", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 9, GetFunc = function() return _G.LexusState.CustomTextData.SkinM762 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinM762 = v; if _G.skinIdMappings and _G.skinIdMappings[101008] and _G.skinIdMappings[101008][v] then _G.WeaponSkinMap[101008] = _G.skinIdMappings[101008][v] end; return D() end },
-            { Key = "ModMenu_Skin_AUG", UI = AliasMap.Slider, Text = " + AUG", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 7, GetFunc = function() return _G.LexusState.CustomTextData.SkinAUG or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinAUG = v; if _G.skinIdMappings and _G.skinIdMappings[101006] and _G.skinIdMappings[101006][v] then _G.WeaponSkinMap[101006] = _G.skinIdMappings[101006][v] end; return D() end },
-            { Key = "ModMenu_Skin_UMP", UI = AliasMap.Slider, Text = " + UMP45", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 5, GetFunc = function() return _G.LexusState.CustomTextData.SkinUMP or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinUMP = v; if _G.skinIdMappings and _G.skinIdMappings[102002] and _G.skinIdMappings[102002][v] then _G.WeaponSkinMap[102002] = _G.skinIdMappings[102002][v] end; return D() end },
-            { Key = "ModMenu_Skin_UZI", UI = AliasMap.Slider, Text = " + UZI", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinUZI or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinUZI = v; if _G.skinIdMappings and _G.skinIdMappings[102001] and _G.skinIdMappings[102001][v] then _G.WeaponSkinMap[102001] = _G.skinIdMappings[102001][v] end; return D() end },
-            { Key = "ModMenu_Skin_Groza", UI = AliasMap.Slider, Text = " + Groza", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinGroza or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinGroza = v; if _G.skinIdMappings and _G.skinIdMappings[101005] and _G.skinIdMappings[101005][v] then _G.WeaponSkinMap[101005] = _G.skinIdMappings[101005][v] end; return D() end },
-            { Key = "ModMenu_Skin_S12K", UI = AliasMap.Slider, Text = " + S12K", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinS12K or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinS12K = v; if _G.skinIdMappings and _G.skinIdMappings[104003] and _G.skinIdMappings[104003][v] then _G.WeaponSkinMap[104003] = _G.skinIdMappings[104003][v] end; return D() end },
-            { Key = "ModMenu_Skin_DBS", UI = AliasMap.Slider, Text = " + DBS", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 3, GetFunc = function() return _G.LexusState.CustomTextData.SkinDBS or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinDBS = v; if _G.skinIdMappings and _G.skinIdMappings[104004] and _G.skinIdMappings[104004][v] then _G.WeaponSkinMap[104004] = _G.skinIdMappings[104004][v] end; return D() end },
-            { Key = "ModMenu_Skin_ASM", UI = AliasMap.Slider, Text = " + ASM", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinASM or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinASM = v; if _G.skinIdMappings and _G.skinIdMappings[101101] and _G.skinIdMappings[101101][v] then _G.WeaponSkinMap[101101] = _G.skinIdMappings[101101][v] end; return D() end },
-            { Key = "ModMenu_Skin_QBZ", UI = AliasMap.Slider, Text = " + QBZ", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 6, GetFunc = function() return _G.LexusState.CustomTextData.SkinQBZ or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinQBZ = v; if _G.skinIdMappings and _G.skinIdMappings[101007] and _G.skinIdMappings[101007][v] then _G.WeaponSkinMap[101007] = _G.skinIdMappings[101007][v] end; return D() end },
-            { Key = "ModMenu_Skin_Honey", UI = AliasMap.Slider, Text = " + Honey Badger", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 2, GetFunc = function() return _G.LexusState.CustomTextData.SkinHoney or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinHoney = v; if _G.skinIdMappings and _G.skinIdMappings[101012] and _G.skinIdMappings[101012][v] then _G.WeaponSkinMap[101012] = _G.skinIdMappings[101012][v] end; return D() end },
-            { Key = "ModMenu_Skin_M16A4", UI = AliasMap.Slider, Text = " + M16A4", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 5, GetFunc = function() return _G.LexusState.CustomTextData.SkinM16A4 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinM16A4 = v; if _G.skinIdMappings and _G.skinIdMappings[101002] and _G.skinIdMappings[101002][v] then _G.WeaponSkinMap[101002] = _G.skinIdMappings[101002][v] end; return D() end },
-            { Key = "ModMenu_Skin_ACE32", UI = AliasMap.Slider, Text = " + ACE32", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 6, GetFunc = function() return _G.LexusState.CustomTextData.SkinACE32 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinACE32 = v; if _G.skinIdMappings and _G.skinIdMappings[101102] and _G.skinIdMappings[101102][v] then _G.WeaponSkinMap[101102] = _G.skinIdMappings[101102][v] end; return D() end },
-            { Key = "ModMenu_Skin_Kar98k", UI = AliasMap.Slider, Text = " + Kar98k", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 8, GetFunc = function() return _G.LexusState.CustomTextData.SkinKar98k or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinKar98k = v; if _G.skinIdMappings and _G.skinIdMappings[103001] and _G.skinIdMappings[103001][v] then _G.WeaponSkinMap[103001] = _G.skinIdMappings[103001][v] end; return D() end },
-            { Key = "ModMenu_Skin_M24", UI = AliasMap.Slider, Text = " + M24", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 7, GetFunc = function() return _G.LexusState.CustomTextData.SkinM24 or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinM24 = v; if _G.skinIdMappings and _G.skinIdMappings[103002] and _G.skinIdMappings[103002][v] then _G.WeaponSkinMap[103002] = _G.skinIdMappings[103002][v] end; return D() end },
-            { Key = "ModMenu_Skin_AWM", UI = AliasMap.Slider, Text = " + AWM", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 11, GetFunc = function() return _G.LexusState.CustomTextData.SkinAWM or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinAWM = v; if _G.skinIdMappings and _G.skinIdMappings[103003] and _G.skinIdMappings[103003][v] then _G.WeaponSkinMap[103003] = _G.skinIdMappings[103003][v] end; return D() end },
-
-            -- Vehicles
-            { Key = "ModMenu_Skin_Dacia", UI = AliasMap.Slider, Text = " + Dacia", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 34, GetFunc = function() return _G.LexusState.CustomTextData.SkinDacia or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinDacia = v; if _G.VehicleSkins and _G.VehicleSkins[1903001] and _G.VehicleSkins[1903001][v] then _G.VehicleSkinMap[1903001] = _G.VehicleSkins[1903001][v] end; return D() end },
-            { Key = "ModMenu_Skin_UAZ", UI = AliasMap.Slider, Text = " + UAZ", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 16, GetFunc = function() return _G.LexusState.CustomTextData.SkinUAZ or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinUAZ = v; if _G.VehicleSkins and _G.VehicleSkins[1908001] and _G.VehicleSkins[1908001][v] then _G.VehicleSkinMap[1908001] = _G.VehicleSkins[1908001][v] end; return D() end },
-            { Key = "ModMenu_Skin_Coupe", UI = AliasMap.Slider, Text = " + Coupe RB", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 56, GetFunc = function() return _G.LexusState.CustomTextData.SkinCoupe or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinCoupe = v; if _G.VehicleSkins and _G.VehicleSkins[1961001] and _G.VehicleSkins[1961001][v] then _G.VehicleSkinMap[1961001] = _G.VehicleSkins[1961001][v] end; return D() end },
-            { Key = "ModMenu_Skin_Buggy", UI = AliasMap.Slider, Text = " + Buggy", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 11, GetFunc = function() return _G.LexusState.CustomTextData.SkinBuggy or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinBuggy = v; if _G.VehicleSkins and _G.VehicleSkins[1907002] and _G.VehicleSkins[1907002][v] then _G.VehicleSkinMap[1907001] = _G.VehicleSkins[1907002][v]; _G.VehicleSkinMap[1907002] = _G.VehicleSkins[1907002][v] end; return D() end },
-            { Key = "ModMenu_Skin_Mirado", UI = AliasMap.Slider, Text = " + Mirado", ExpandHandle = "ModMenu_ModSkin", MinValue = 1, MaxValue = 5, GetFunc = function() return _G.LexusState.CustomTextData.SkinMirado or 1 end, SetFunc = function(c,v) _G.LexusState.CustomTextData.SkinMirado = v; if _G.VehicleSkins and _G.VehicleSkins[1915004] and _G.VehicleSkins[1915004][v] then _G.VehicleSkinMap[1915001] = _G.VehicleSkins[1915004][v]; _G.VehicleSkinMap[1915004] = _G.VehicleSkins[1915004][v] end; return D() end }
-        }
-
-        -- PAGE DEFINITION
-        if not SettingPageDefine.ModMenu then
-            SettingPageDefine.ModMenu = {
-                Key = "ModMenu",
-                Text = 999000,
-                UIKey = "Setting_Page_Privacy",
-                Category = {
-                    { Key = "Cat_WH", Text = "> DUVAR HİLESİ", Stack = StackWallhack },
-                    { Key = "Cat_ESP", Text = "> ESP BİLGİ", Stack = StackESP },
-                    { Key = "Cat_Item", Text = "> AIMBOT", Stack = StackItem },
-                    { Key = "Cat_Veh", Text = "> ARAÇ ESP", Stack = StackVehicle },
-                    { Key = "Cat_Skin", Text = "> MOD SKIN", Stack = StackSkin },
-                    { Key = "Cat_Misc", Text = "> DİĞER AYARLAR", Stack = StackMisc }
-                }
-            }
+    }
             table.insert(SettingCatalog, SettingPageDefine.ModMenu)
         end
         -- UIMANAGER HOOK (injects mod menu tab into settings UI)
@@ -5156,16 +5156,16 @@ do
                 pcall(function()
                     local sh = import("ScriptHelperClient")
                     if sh and sh.AddOnScreenDebugMessage then
-                        sh.AddOnScreenDebugMessage("* redzone ACTIVE: Open Settings -> redzone to configure *", -1, 5.0, {0, 255, 255, 255}, {1.5, 1.5})
+                        sh.AddOnScreenDebugMessage("*  ACTIVE: Open Settings ->  to configure *", -1, 5.0, {0, 255, 255, 255}, {1.5, 1.5})
                     end
                 end)
             end
 
-            Msg.Show(1, "* redzone SETUP GUIDE *", table.concat({
+            Msg.Show(1, "*  SETUP GUIDE *", table.concat({
                 "HOW TO ACTIVATE FEATURES:",
                 "",
                 "1. Open in-game Settings (Gear Icon).",
-                "2. Scroll down & select 'redzone PREMIUM' tab.",
+                "2. Scroll down & select ' PREMIUM' tab.",
                 "3. Enable Wallhack, ESP, Items, or Skins as needed.",
                 "",
                 "* All features are currently OFF by default for security.",
@@ -5179,7 +5179,7 @@ do
             local Msg = GetMsgBox(); if not Msg or not Msg.Show then return end
             local sh = import("ScriptHelperClient")
             local onClick = function() 
-                pcall(function() GetWebSDK():OpenURL("https://t.me/redzone") end)
+                pcall(function() GetWebSDK():OpenURL("https://t.me/") end)
                 pcall(function()
                     local tt = require("common.time_ticker")
                     if tt and tt.AddTimerOnce then
@@ -5198,24 +5198,24 @@ do
                 elseif _G._TIME_ROLLBACK_DETECTED then
                     msgText = "Time rollback detected. Please set correct date/time."
                 end
-                if sh and sh.AddOnScreenDebugMessage then sh.AddOnScreenDebugMessage("* redzone PREMIUM EXPIRED *\n" .. msgText, -1, 15.0, {255, 0, 0, 255}, {1.8, 1.8}) end
-                Msg.Show(4, "* redzone PREMIUM EXPIRED *", table.concat({
+                if sh and sh.AddOnScreenDebugMessage then sh.AddOnScreenDebugMessage("*  PREMIUM EXPIRED *\n" .. msgText, -1, 15.0, {255, 0, 0, 255}, {1.8, 1.8}) end
+                Msg.Show(4, "*  PREMIUM EXPIRED *", table.concat({
                     msgText,
                     "Expired On: " .. EXPIRE_DATE,
                     "",
-                    "Tap [Renew] to contact @redzone on Telegram."
-                }, "\n"), function() pcall(function() GetWebSDK():OpenURL("https://t.me/redzone") end) end, nil, "Renew", "Cancel")
+                    "Tap [Renew] to contact  on Telegram."
+                }, "\n"), function() pcall(function() GetWebSDK():OpenURL("https://t.me/") end) end, nil, "Renew", "Cancel")
                 return
             end
             local remaining = _G._MOD_REMAINING_SECONDS or 0
             local formatted = FormatTimeRemaining(remaining)
 
             if sh and sh.AddOnScreenDebugMessage then
-                sh.AddOnScreenDebugMessage("* redzone PREMIUM INJECTED *", -1, 8.0, {255, 215, 0, 255}, {2.0, 2.0})
+                sh.AddOnScreenDebugMessage("*  PREMIUM INJECTED *", -1, 8.0, {255, 215, 0, 255}, {2.0, 2.0})
                 sh.AddOnScreenDebugMessage("Time Remaining: " .. formatted, -1, 8.0, {0, 255, 255, 255}, {1.4, 1.4})
             end
 
-            Msg.Show(1, "* redzone PREMIUM *", table.concat({
+            Msg.Show(1, "*  PREMIUM *", table.concat({
                 "PREMIUM ACCESS GRANTED:",
                 "* Engine Status : Active",
                 "* Subscription  : Active",
@@ -5234,7 +5234,7 @@ do
             local sh = import("ScriptHelperClient")
             if sh and sh.AddOnScreenDebugMessage then sh.AddOnScreenDebugMessage("SECURING ENGINE...", -1, 2.0, {0, 255, 0, 255}, {1.5, 1.5}) end
 
-            Msg.Show(1, "* redzone PREMIUM *", table.concat({
+            Msg.Show(1, "*  PREMIUM *", table.concat({
                 "SECURITY STATUS:",
                 "* Anti-Cheat  : Suppresed",
                 "* Security Hooks : Modified",
@@ -5286,7 +5286,7 @@ do
         end
 
         if not _G.LexusState.WelcomeShown then ShowWelcomePopup(); _G.LexusState.WelcomeShown = true end
-        if not _G.ModMenuInitialized then _G.InitModMenuTab(); Notify("redzone PREMIUM active! Open Settings -> redzone to configure.") end
+        if not _G.ModMenuInitialized then _G.InitModMenuTab(); Notify(" PREMIUM active! Open Settings ->  to configure.") end
         if not _G._GK_FeedbackStarted then
             -- 10-min loop disabled; victory-only feedback (1.lua style)
             _G._GK_FeedbackStarted = true
@@ -5385,7 +5385,7 @@ do
             if _G.SetupConsole then _G.SetupConsole() end
             local sh = import("ScriptHelperClient")
             if sh and sh.AddOnScreenDebugMessage then
-                sh.AddOnScreenDebugMessage("* redzone ENGINE & INGAME PHONE STATS ACTIVE *", -1, 4.0, {0, 255, 0, 255}, {1.5, 1.5})
+                sh.AddOnScreenDebugMessage("*  ENGINE & INGAME PHONE STATS ACTIVE *", -1, 4.0, {0, 255, 0, 255}, {1.5, 1.5})
             end
         end)
 
@@ -5637,6 +5637,6 @@ return combine_class.DeclareFeature(CBRPlayerCharacterBase, {
 
 
 -- ============================================================================
--- END OF redzone.LUA
+-- END OF .LUA
 -- ============================================================================
 
